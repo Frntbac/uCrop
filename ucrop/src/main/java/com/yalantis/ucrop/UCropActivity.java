@@ -88,6 +88,8 @@ public class UCropActivity extends AppCompatActivity {
     private boolean mShowBottomControls;
     private boolean mShowLoader = true;
 
+    private Uri mCustomOverlay;
+
     private UCropView mUCropView;
     private GestureCropImageView mGestureCropImageView;
     private OverlayView mOverlayView;
@@ -272,6 +274,7 @@ public class UCropActivity extends AppCompatActivity {
         mToolbarTitle = !TextUtils.isEmpty(mToolbarTitle) ? mToolbarTitle : getResources().getString(R.string.ucrop_label_edit_photo);
         mLogoColor = intent.getIntExtra(UCrop.Options.EXTRA_UCROP_LOGO_COLOR, ContextCompat.getColor(this, R.color.ucrop_color_default_logo));
         mShowBottomControls = !intent.getBooleanExtra(UCrop.Options.EXTRA_HIDE_BOTTOM_CONTROLS, false);
+        mCustomOverlay = intent.getParcelableExtra(UCrop.Options.EXTRA_OVERLAY);
 
         setupAppBar();
         initiateRootViews();
@@ -330,6 +333,7 @@ public class UCropActivity extends AppCompatActivity {
         mUCropView = (UCropView) findViewById(R.id.ucrop);
         mGestureCropImageView = mUCropView.getCropImageView();
         mOverlayView = mUCropView.getOverlayView();
+        mUCropView.setCustomOverlay(mCustomOverlay);
 
         mGestureCropImageView.setTransformImageListener(mImageListener);
 

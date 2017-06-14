@@ -253,6 +253,8 @@ public class UCrop {
         public static final String EXTRA_ASPECT_RATIO_SELECTED_BY_DEFAULT = EXTRA_PREFIX + ".AspectRatioSelectedByDefault";
         public static final String EXTRA_ASPECT_RATIO_OPTIONS = EXTRA_PREFIX + ".AspectRatioOptions";
 
+        public static final String EXTRA_OVERLAY = EXTRA_PREFIX + ".Overlay";
+
 
         private final Bundle mOptionBundle;
 
@@ -487,6 +489,10 @@ public class UCrop {
         public void withMaxResultSize(@IntRange(from = 100) int width, @IntRange(from = 100) int height) {
             mOptionBundle.putInt(EXTRA_MAX_SIZE_X, width);
             mOptionBundle.putInt(EXTRA_MAX_SIZE_Y, height);
+        }
+
+        public void withOverlay(@Nullable Uri uri) {
+            mOptionBundle.putParcelable(EXTRA_OVERLAY, uri);
         }
 
     }
